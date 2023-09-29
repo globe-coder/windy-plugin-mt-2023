@@ -1,0 +1,46 @@
+{
+    "name": "windy-plugin-mt-2023",
+    "type": "module",
+    "version": "0.1.0",
+    "description": "Show boats position and tracks of the Minitransat 2023",
+    "main": "dist/plugin.js",
+    "scripts": {
+        "start": "node ./compiler.js --build --watch --prompt --serve --transpile",
+        "start-dev": "node ./compiler.js --build --watch --serve --transpile",
+        "prepublishOnly": "node ./test/prepublish.js",
+        "test": "node ./test/prepublish.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/globe-coder/windy-plugin-mt-2023.git"
+    },
+    "author": "Arnaud Kawka",
+    "license": "MIT",
+    "dependencies": {
+        "@babel/preset-env": "^7.21.5",
+        "@rollup/plugin-babel": "^6.0.3",
+        "@rollup/plugin-commonjs": "^25.0.0",
+        "@rollup/plugin-node-resolve": "^15.0.2",
+        "@rollup/plugin-terser": "^0.4.3",
+        "chokidar": "^3.5.3",
+        "colorette": "^2.0.20",
+        "commander": "^10.0.1",
+        "consola": "^3.1.0",
+        "decache": "^4.6.1",
+        "estree-walker": "^3.0.3",
+        "express": "^4.18.2",
+        "html-minifier": "^4.0.0",
+        "less": "^4.1.3",
+        "magic-string": "^0.30.0",
+        "prompts": "^2.4.2",
+        "rollup": "^3.22.0",
+        "rollup-plugin-cleanup": "^3.2.1",
+        "ucfirst": "^1.0.0"
+    },
+    "devDependencies": {
+        "eslint": "^8.40.0",
+        "eslint-plugin-html": "^7.1.0",
+        "prettier": "^2.8.8"
+    },
+    "homepage": "https://github.com/globe-coder/windy-plugin-mt-2023#readme"
+}
