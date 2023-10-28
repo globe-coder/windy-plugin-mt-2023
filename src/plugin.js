@@ -438,6 +438,7 @@ const load = () => {
 
                 const boat = result[boatNumber];
                 const boatDetails = boatInfo[boatNumber];
+                console.log(boat)
 
                 const layer = L.polyline(boat.track, {
                     color: `hsl(${hue}, 100%, 45%)`,
@@ -456,6 +457,9 @@ const load = () => {
                 markers.push(marker);
                 marker._icon.setAttribute('data-heading', boat.heading);
 
+                // Convertir le timestamp en date et heure
+                const timestamp = new Date(boat.timestamp * 1000); // Multipliez par 1000 car le timestamp est en secondes
+
                 // Créez le contenu HTML personnalisé pour la popup
                 const popupContent = `
                     <div>
@@ -466,6 +470,7 @@ const load = () => {
                         <strong>Dist. au but:</strong> ${boat.dtf}<br>
                         <strong>Dist. au premier:</strong> ${boat.dtl}<br>
                         <strong>Vitesse:</strong> ${boat.speed}<br>
+                        <strong>Dernière mise à jour:</strong> ${timestamp.toLocaleString()}<br>
                     </div>
                 `;
 
@@ -511,7 +516,7 @@ export const onopen = () => {
     map.on('viewreset', updateIconStyle);
     hasHooks = true;
 
-    map.setView([39, -5], 6);
+    map.setView([28.600, -17.700], 8);
 };
 
 export const ondestroy = () => {
