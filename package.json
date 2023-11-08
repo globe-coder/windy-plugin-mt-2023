@@ -1,8 +1,8 @@
 {
     "name": "windy-plugin-minitransat",
     "type": "module",
-    "version": "1.1.0",
-    "description": "Show boats position and tracks of the Minitransat 2023",
+    "version": "2.0.0",
+    "description": "Show boats position and tracks of offshore sailing races",
     "main": "dist/plugin.js",
     "scripts": {
         "start": "node ./compiler.js --build --watch --prompt --serve --transpile",

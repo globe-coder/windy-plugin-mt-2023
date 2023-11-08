@@ -1,7 +1,24 @@
 @import 'dev/variables.less';
 
-.onwindy-plugin-myname {
+@widthOfMyPlugin: 250px;
+
+.onwindy-plugin-minitransat {
+    .left-border {
+        left: @widthOfMyPlugin;
+    }
+
+    #search {
+        display: none;
+    }
 }
 
-#windy-plugin-myname {
+#windy-plugin-minitransat {
+    width: @widthOfMyPlugin;
+    height: 100%;
+
+    .plugin-content {
+        padding: 20px 15px 15px 15px;
+        font-size: 14px;
+        line-height: 1.6;
+    }
 }

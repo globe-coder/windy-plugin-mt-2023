@@ -1,5 +1,484 @@
 import { map } from '@windy/map';
 
+const boatInfoTJV =
+{
+    62: {
+      boatName: 'Alla Grande Pirelli',
+      skipperNames: 'Ambrogio BECCARIA & Nicolas ANDRIEU',
+      category: 'class40'
+    },
+    78: {
+      boatName: 'IBSA',
+      skipperNames: 'Alberto BONA & Pablo SANTURDE DEL ARCO',
+      category: 'class40'
+    },
+    64: {
+      boatName: 'Amarris',
+      skipperNames: 'Achille NEBOUT & Gildas MAHE',
+      category: 'class40'
+    },
+    85: {
+      boatName: 'Legallais',
+      skipperNames: 'Fabien DELAHAYE & Corentin DOUGUET',
+      category: 'class40'
+    },
+    66: {
+      boatName: 'Café Joyeux',
+      skipperNames: "Nicolas D'ESTAIS & Léo DEBIESSE",
+      category: 'class40'
+    },
+    93: {
+      boatName: 'Project Rescue Ocean',
+      skipperNames: 'Axel TRÉHIN & Gwenaël RIOU',
+      category: 'class40'
+    },
+    80: {
+      boatName: 'Inter Invest',
+      skipperNames: 'Matthieu PERRAUT & Kevin BLOCH',
+      category: 'class40'
+    },
+    77: {
+      boatName: 'Groupe SNEF',
+      skipperNames: 'Xavier MACAIRE & Pierre LEBOUCHER',
+      category: 'class40'
+    },
+    81: {
+      boatName: 'La Boulangère Bio',
+      skipperNames: 'Amélie GRASSI & Anne-Claire LE BERRE',
+      category: 'class40'
+    },
+    69: {
+      boatName: 'Crédit Mutuel',
+      skipperNames: 'Ian LIPINSKI & Antoine CARPENTIER',
+      category: 'class40'
+    },
+    76: {
+      boatName: 'Everial',
+      skipperNames: 'Erwan LE DRAOULEC & Tanguy LEGLATIN',
+      category: 'class40'
+    },
+    102: {
+      boatName: 'Vogue Avec Un Crohn',
+      skipperNames: 'Pierre-Louis ATTWELL & Maxime BENSA',
+      category: 'class40'
+    },
+    96: {
+      boatName: 'Seafrigo - Sogestran',
+      skipperNames: 'Cédric CHATEAU & Guillaume PIROUELLE',
+      category: 'class40'
+    },
+    100: {
+      boatName: 'Tquila',
+      skipperNames: 'Alister RICHARDSON & Brian THOMPSON',
+      category: 'class40'
+    },
+    79: {
+      boatName: 'Influence 2',
+      skipperNames: 'Andrea FORNARO & Benoît HANTZPERG',
+      category: 'class40'
+    },
+    63: {
+      boatName: 'Alternative Sailing - Constructions Du Belon',
+      skipperNames: 'Estelle GRECK & Mathieu JONES',
+      category: 'class40'
+    },
+    68: {
+      boatName: 'Centrakor',
+      skipperNames: 'Mikael MERGUI & Ludovic  MÉCHIN',
+      category: 'class40'
+    },
+    92: {
+      boatName: 'Sign For Com',
+      skipperNames: 'Lennart BURKE & Melwin FINK',
+      category: 'class40'
+    },
+    103: {
+      boatName: 'Wasabiii',
+      skipperNames: 'Stéphane BODIN & Swann HAYEWSKI',
+      category: 'class40'
+    },
+    65: {
+      boatName: 'AMIPI - Tombelaine Coquillages',
+      skipperNames: 'Baptiste HULIN & Arthur HUBERT',
+      category: 'class40'
+    },
+    75: {
+      boatName: 'Edenred',
+      skipperNames: 'Emmanuel LE ROCH & Basile BOURGNON',
+      category: 'class40'
+    },
+    67: {
+      boatName: 'Captain Alternance',
+      skipperNames: 'Keni PIPEROL & Thomas JOURDREN',
+      category: 'class40'
+    },
+    104: {
+      boatName: 'Team Zeiss-weeecycling',
+      skipperNames: 'Thimoté POLET & Pierrick LETOUZE',
+      category: 'class40'
+    },
+    86: {
+      boatName: "L'envol-kermarrec Promotion",
+      skipperNames: 'Anatole FACON & Alice VALIERGUE',
+      category: 'class40'
+    },
+    74: {
+      boatName: 'P - Eden Park - Les Papillons Du Ciel',
+      skipperNames: 'Nicolas BOMBRUN & Paul BRANDEL',
+      category: 'class40'
+    },
+    73: {
+      boatName: 'Google Chrome',
+      skipperNames: 'Kieran LE BORGNE & Basile BUISSON',
+      category: 'class40'
+    },
+    90: {
+      boatName: 'P - Mussulo 40',
+      skipperNames: 'Jose Guilherme CALDAS & Gustavo PEIXOTO',
+      category: 'class40'
+    },
+    88: {
+      boatName: 'P - Vogue Le Monde',
+      skipperNames: 'Benoit LEQUIN & Stéphane HUNOT',
+      category: 'class40'
+    },
+    101: {
+      boatName: 'P - Trimcontrol',
+      skipperNames: 'Alexandre LE GALLAIS & Carlo VROON',
+      category: 'class40'
+    },
+    82: {
+      boatName: 'La Manche #Evidence Nautique',
+      skipperNames: 'Nicolas JOSSIER & Alexis LOISON',
+      category: 'class40'
+    },
+    91: {
+      boatName: 'Nestenn - Entrepreneurs Pour La Planète',
+      skipperNames: 'Jules BONNIER & Robin FOLLIN',
+      category: 'class40'
+    },
+    97: {
+      boatName: 'P - Sotraplant TRS',
+      skipperNames: 'Matthieu FOULQUIER-GAZAGNES & Michel MILANESE',
+      category: 'class40'
+    },
+    70: {
+      boatName: 'Crosscall',
+      skipperNames: 'Aurélien DUCROZ & Vincent RIOU',
+      category: 'class40'
+    },
+    83: {
+      boatName: 'P - Label Emmaüs',
+      skipperNames: 'Jérôme LESIEUR & Damien JENNER',
+      category: 'class40'
+    },
+    98: {
+      boatName: 'ENGIE - DFDS - Brittany Ferries',
+      skipperNames: 'Pamela LEE & Tiphaine RAGUENEAU',
+      category: 'class40'
+    },
+    87: {
+      boatName: 'P - Martinique Tchalian',
+      skipperNames: 'Hervé JEAN-MARIE & Jean-Yves AGLAE',
+      category: 'class40'
+    },
+    84: {
+      boatName: 'P - Le Bleuet De France',
+      skipperNames: 'Charlotte CORMOULS-HOULES & Claire-Victoire DE FLEURIAN',
+      category: 'class40'
+    },
+    94: {
+      boatName: 'Qwanza',
+      skipperNames: 'Goulven MARIE & Nicolas BATTESTI',
+      category: 'class40'
+    },
+    99: {
+      boatName: 'The Sea Cleaners - Univerre - Ensm',
+      skipperNames: 'Renaud COURBON & François CHAMPION',
+      category: 'class40'
+    },
+    71: {
+      boatName: 'Curium Life Forward',
+      skipperNames: 'Marc LEPESQUEUX & Renaud DEHARENG',
+      category: 'class40'
+    },
+    89: {
+      boatName: 'Movember',
+      skipperNames: 'Bertrand GUILLONNEAU & Kito DE PAVANT',
+      category: 'class40'
+    },
+    61: {
+      boatName: 'Acrobatica',
+      skipperNames: 'Alberto RIVA & Jean MARRE',
+      category: 'class40'
+    },
+    72: {
+      boatName: 'Dékuple',
+      skipperNames: 'William MATHELIN-MOREAUX & Pietro LUCIANI',
+      category: 'class40'
+    },
+    95: {
+      boatName: 'P - Rêve À Perte De Vue',
+      skipperNames: 'Joël PARIS & Jérôme RAGIMBEAU',
+      category: 'class40'
+    },
+    29: {
+      boatName: 'FOR PEOPLE',
+      skipperNames: 'Thomas RUYANT & Morgan LAGRAVIERE',
+      category: 'imoca'
+    },
+    23: {
+      boatName: 'Charal',
+      skipperNames: 'Jérémie BEYOU & Franck CAMMAS',
+      category: 'imoca'
+    },
+    40: {
+      boatName: 'Initiatives Coeur',
+      skipperNames: 'Sam DAVIES & Jack BOUTTELL',
+      category: 'imoca'
+    },
+    53: {
+      boatName: 'Paprec Arkéa',
+      skipperNames: 'Yoann RICHOMME & Yann ELIES',
+      category: 'imoca'
+    },
+    58: {
+      boatName: 'Teamwork.net',
+      skipperNames: 'Justine METTRAUX & Julien VILLION',
+      category: 'imoca'
+    },
+    30: {
+      boatName: 'FOR THE PLANET',
+      skipperNames: 'Sam GOODCHILD & Antoine KOCH',
+      category: 'imoca'
+    },
+    47: {
+      boatName: 'Malizia - Seaexplorer',
+      skipperNames: 'Boris HERRMANN & William HARRIS',
+      category: 'imoca'
+    },
+    46: {
+      boatName: 'Maître CoQ V',
+      skipperNames: 'Yannick BESTAVEN & Julien PULVE',
+      category: 'imoca'
+    },
+    35: {
+      boatName: 'Groupe Dubreuil',
+      skipperNames: 'Sébastien SIMON & Iker MARTINEZ',
+      category: 'imoca'
+    },
+    43: {
+      boatName: "L'occitane En Provence",
+      skipperNames: 'Clarisse CRÉMER & Alan ROBERTS',
+      category: 'imoca'
+    },
+    36: {
+      boatName: 'GUYOT environnement - Water Family',
+      skipperNames: 'Benjamin DUTREUX & Corentin  HOREAU',
+      category: 'imoca'
+    },
+    59: {
+      boatName: 'V and B - Monbana - Mayenne',
+      skipperNames: 'Maxime SOREL & Christopher PRATT',
+      category: 'imoca'
+    },
+    34: {
+      boatName: 'Groupe APICIL',
+      skipperNames: 'Damien SEGUIN & Laurent  BOURGUES',
+      category: 'imoca'
+    },
+    55: {
+      boatName: 'Prysmian Group',
+      skipperNames: 'Giancarlo PEDOTE & Gaston MORVAN',
+      category: 'imoca'
+    },
+    31: {
+      boatName: 'Fortinet - Best Western',
+      skipperNames: 'Romain ATTANASIO & Loïs BERREHAR',
+      category: 'imoca'
+    },
+    48: {
+      boatName: 'Medallia',
+      skipperNames: 'Pip HARE & Nick BUBB',
+      category: 'imoca'
+    },
+    41: {
+      boatName: 'La Mie Câline',
+      skipperNames: 'Arnaud BOISSIÈRES & Gérald VÉNIARD',
+      category: 'imoca'
+    },
+    21: {
+      boatName: 'Biotherm',
+      skipperNames: 'Paul MEILHAT & Mariana LOBATO',
+      category: 'imoca'
+    },
+    27: {
+      boatName: 'DMG MORI Global One',
+      skipperNames: 'Kojiro SHIRAISHI & Thierry DUPREY DU VORSENT',
+      category: 'imoca'
+    },
+    37: {
+      boatName: 'Hublot',
+      skipperNames: 'Alan ROURA & Simon KOSTER',
+      category: 'imoca'
+    },
+    24: {
+      boatName: 'Coup de Pouce - Giffard Manutention',
+      skipperNames: 'Manuel COUSIN & Clément GIRAUD',
+      category: 'imoca'
+    },
+    25: {
+      boatName: 'Devenir',
+      skipperNames: 'Violette DORANGE & Damien GUILLOU',
+      category: 'imoca'
+    },
+    22: {
+      boatName: 'Bureau Vallée',
+      skipperNames: 'Louis BURTON & Davy BEAUDART',
+      category: 'imoca'
+    },
+    42: {
+      boatName: 'LAZARE',
+      skipperNames: 'Tanguy LE TURQUAIS & Félix DE NAVACELLE',
+      category: 'imoca'
+    },
+    33: {
+      boatName: 'freelance.com',
+      skipperNames: 'Guirec SOUDEE & Roland JOURDAIN',
+      category: 'imoca'
+    },
+    39: {
+      boatName: 'MAIL BOXES ETC. (MBE)',
+      skipperNames: 'Conrad COLMAN & Fabio MUZZOLINI',
+      category: 'imoca'
+    },
+    45: {
+      boatName: 'MACSF',
+      skipperNames: 'Isabelle JOSCHKE & Pierre BRASSEUR',
+      category: 'imoca'
+    },
+    28: {
+      boatName: 'Fives Group - Lantana Environnement',
+      skipperNames: 'Louis DUC & Rémi AUBRUN',
+      category: 'imoca'
+    },
+    51: {
+      boatName: 'Nexans - Art et Fenêtres',
+      skipperNames: 'Fabrice AMEDEO & Andreas BADEN',
+      category: 'imoca'
+    },
+    32: {
+      boatName: 'Foussier - Mon Courtier Energie',
+      skipperNames: 'Sébastien MARSSET & Sophie FAGUET',
+      category: 'imoca'
+    },
+    49: {
+      boatName: 'Monnoyeur - Duo for a job',
+      skipperNames: 'Benjamin FERRE & Pierre LE ROY',
+      category: 'imoca'
+    },
+    54: {
+      boatName: 'Partage',
+      skipperNames: 'François GUIFFANT & Aymeric BELLOIR',
+      category: 'imoca'
+    },
+    50: {
+      boatName: 'New Europe',
+      skipperNames: 'Szabolcs WEÖRES & Irina GRACHEVA',
+      category: 'imoca'
+    },
+    38: {
+      boatName: 'HUMAN Immobilier',
+      skipperNames: 'Antoine CORNIC & Jean-Charles LURO',
+      category: 'imoca'
+    },
+    26: {
+      boatName: "D'Ieteren Group",
+      skipperNames: 'Denis VAN WEYNBERGH & Gilles BUEKENHOUT',
+      category: 'imoca'
+    },
+    57: {
+      boatName: 'STAND AS ONE',
+      skipperNames: 'Eric BELLION & Martin LE PAPE',
+      category: 'imoca'
+    },
+    52: {
+      boatName: 'Oliver Heer Ocean Racing',
+      skipperNames: 'Oliver HEER & Nils PALMIERI',
+      category: 'imoca'
+    },
+    56: {
+      boatName: 'Singchain Team Haikou',
+      skipperNames: 'Jingkun XU & Mike GOLDING',
+      category: 'imoca'
+    },
+    20: {
+      boatName: 'Be Water Positive',
+      skipperNames: 'Scott SHAWYER & Nick MOLONEY',
+      category: 'imoca'
+    },
+    44: {
+      boatName: 'MACIF Santé Prévoyance',
+      skipperNames: 'Charlie DALIN & Pascal BIDEGORRY',
+      category: 'imoca'
+    },
+    14: {
+      boatName: 'Solidaires En Peloton',
+      skipperNames: 'Thibaut VAUCHEL-CAMUS & Quentin VLAMYNCK',
+      category: 'ocean fifty'
+    },
+    15: {
+      boatName: 'Viabilis Océans',
+      skipperNames: 'Pierre QUIROGA & Ronan TREUSSART',
+      category: 'ocean fifty'
+    },
+    13: {
+      boatName: 'REALITES',
+      skipperNames: 'Fabrice CAHIERC & Aymeric CHAPPELLIER',
+      category: 'ocean fifty'
+    },
+    10: {
+      boatName: 'KOESIO',
+      skipperNames: 'Erwan LE ROUX & Audrey OGEREAU',
+      category: 'ocean fifty'
+    },
+    11: {
+      boatName: 'Le Rire Médecin - Lamotte',
+      skipperNames: 'Luke BERRY & Antoine JOUBERT',
+      category: 'ocean fifty'
+    },
+    12: {
+      boatName: 'Primonial',
+      skipperNames: 'Sébastien ROGUES & Jean-Baptiste GELLÉE',
+      category: 'ocean fifty'
+    },
+    5: {
+      boatName: 'SVR Lazartigue',
+      skipperNames: 'François GABART & Tom LAPERCHE',
+      category: 'ultim'
+    },
+    2: {
+      boatName: 'Maxi Banque Populaire XI',
+      skipperNames: "Armel LE CLÉAC'H & Sébastien JOSSE",
+      category: 'ultim'
+    },
+    3: {
+      boatName: 'Maxi Edmond de Rothschild',
+      skipperNames: 'Charles CAUDRELIER & Erwan ISRAËL',
+      category: 'ultim'
+    },
+    4: {
+      boatName: 'SODEBO Ultim 3',
+      skipperNames: 'Thomas COVILLE & Thomas ROUXEL',
+      category: 'ultim'
+    },
+    1: {
+      boatName: 'ACTUAL Ultim 3',
+      skipperNames: 'Anthony MARCHAND & Thierry CHABAGNY',
+      category: 'ultim'
+    }
+  }
+
 // Table de correspondance pour les numéros de bateau
 const boatInfo =
 {
@@ -351,7 +830,7 @@ const boatInfo =
     },
     '1050': {
         boatName: '(1050) Léa Nature', skipperName: 'Marie GENDRON',
-        cat: 'Série'
+        cat: 'Proto'
     },
     '1051': {
         boatName: '(1051) Bihannic-Allentis', skipperName: 'Yaël POUPON',
@@ -413,6 +892,14 @@ const BoatIcon = L.divIcon({
 let markers = [];
 let lines = [];
 
+let showSerie = true;
+let showProto = true;
+
+let showUltim = true;
+let showClass40 = true;
+let showImoca = true;
+let showOceanFifty = true;
+
 const updateIconStyle = () => {
     for (const marker of markers) {
         if (marker._icon) {
@@ -438,58 +925,132 @@ const load = () => {
 
                 const boat = result[boatNumber];
                 const boatDetails = boatInfo[boatNumber];
-                console.log(boat)
 
-                const layer = L.polyline(boat.track, {
-                    color: `hsl(${hue}, 100%, 45%)`,
-                    weight: 2,
-                    opacity: 0.5,
-                }).addTo(map);
+                if ((showSerie && boatDetails.cat === 'Série') || (showProto && boatDetails.cat === 'Proto')) {
+                    const layer = L.polyline(boat.track, {
+                        color: `hsl(${hue}, 100%, 45%)`,
+                        weight: 2,
+                        opacity: 0.5,
+                    }).addTo(map);
+    
+                    layer.on('mouseover', () => layer.setStyle({ opacity: 1, weight: 4 }));
+    
+                    layer.on('mouseout', () => layer.setStyle({ opacity: 0.5, weight: 2 }));
 
-                layer.on('mouseover', () => layer.setStyle({ opacity: 1, weight: 4 }));
+                    const marker = L.marker(boat.track[boat.track.length - 1], {
+                        icon: BoatIcon,
+                    }).addTo(map);
 
-                layer.on('mouseout', () => layer.setStyle({ opacity: 0.5, weight: 2 }));
+                    markers.push(marker);
+                    marker._icon.setAttribute('data-heading', boat.heading);
 
-                const marker = L.marker(boat.track[boat.track.length - 1], {
-                    icon: BoatIcon,
-                }).addTo(map);
+                    // Convertir le timestamp en date et heure
+                    const timestamp = new Date(boat.timestamp * 1000); // Multipliez par 1000 car le timestamp est en secondes
 
-                markers.push(marker);
-                marker._icon.setAttribute('data-heading', boat.heading);
+                    // Créez le contenu HTML personnalisé pour la popup
+                    const popupContent = `
+                        <div>
+                            <strong>Nom du Bateau:</strong> ${boatDetails.boatName}<br>
+                            <strong>Nom du Skipper:</strong> ${boatDetails.skipperName}<br>
+                            <strong>Catégorie:</strong> ${boatDetails.cat}<br>
+                            <strong>Cap:</strong> ${boat.heading}<br>
+                            <strong>Dist. au but:</strong> ${boat.dtf}<br>
+                            <strong>Dist. au premier:</strong> ${boat.dtl}<br>
+                            <strong>Vitesse:</strong> ${boat.speed}<br>
+                            <strong>Dernière mise à jour:</strong> ${timestamp.toLocaleString()}<br>
+                        </div>
+                    `;
 
-                // Convertir le timestamp en date et heure
-                const timestamp = new Date(boat.timestamp * 1000); // Multipliez par 1000 car le timestamp est en secondes
+                    marker.bindPopup(popupContent);
 
-                // Créez le contenu HTML personnalisé pour la popup
-                const popupContent = `
-                    <div>
-                        <strong>Nom du Bateau:</strong> ${boatDetails.boatName}<br>
-                        <strong>Nom du Skipper:</strong> ${boatDetails.skipperName}<br>
-                        <strong>Catégorie:</strong> ${boatDetails.cat}<br>
-                        <strong>Cap:</strong> ${boat.heading}<br>
-                        <strong>Dist. au but:</strong> ${boat.dtf}<br>
-                        <strong>Dist. au premier:</strong> ${boat.dtl}<br>
-                        <strong>Vitesse:</strong> ${boat.speed}<br>
-                        <strong>Dernière mise à jour:</strong> ${timestamp.toLocaleString()}<br>
-                    </div>
-                `;
+                    marker.on('click', () => {
+                        layer.setStyle({ weight: 4, opacity: 1 });
+                    });
 
-                marker.bindPopup(popupContent);
+                    marker.on('mouseover', () => layer.setStyle({ weight: 4, opacity: 1 }));
+                    marker.on('mouseout', () => {
+                        if (!marker._icon.classList.contains('leaflet-popup-target')) {
+                            layer.setStyle({ weight: 2, opacity: 0.5 });
+                        }
+                    });
 
-                marker.on('click', () => {
-                    layer.setStyle({ weight: 4, opacity: 1 });
-                });
+                    lines.push(layer);
 
-                marker.on('mouseover', () => layer.setStyle({ weight: 4, opacity: 1 }));
-                marker.on('mouseout', () => {
-                    if (!marker._icon.classList.contains('leaflet-popup-target')) {
-                        layer.setStyle({ weight: 2, opacity: 0.5 });
-                    }
-                });
+                    updateIconStyle();
+                }
+            }
+        })
+        .catch(console.error);
+};
 
-                lines.push(layer);
+const loadTJV = () => {
+    fetch('https://raw.githubusercontent.com/globe-coder/minitransat-tracker/master/boats_result_TJV.json')
+        .then(response => response.json())
+        .then(result => result.result)
+        .then(result => {
+            let hue = 0;
 
-                updateIconStyle();
+            for (const boatNumber of Object.keys(result)) {
+                hue = (hue + 60) % 360;
+
+                const boat = result[boatNumber];
+                const boatDetails = boatInfoTJV[boatNumber];
+
+                if ((showImoca && boatDetails.category === 'imoca') || (showClass40 && boatDetails.category === 'class40')
+                || (showOceanFifty && boatDetails.category === 'ocean fifty') || (showUltim && boatDetails.category === 'ultim')) {
+
+                    const layer = L.polyline(boat.track, {
+                        color: `hsl(${hue}, 100%, 45%)`,
+                        weight: 2,
+                        opacity: 0.5,
+                    }).addTo(map);
+
+                    layer.on('mouseover', () => layer.setStyle({ opacity: 1, weight: 4 }));
+
+                    layer.on('mouseout', () => layer.setStyle({ opacity: 0.5, weight: 2 }));
+
+                    const marker = L.marker(boat.track[boat.track.length - 1], {
+                        icon: BoatIcon,
+                    }).addTo(map);
+
+                    markers.push(marker);
+                    marker._icon.setAttribute('data-heading', boat.heading);
+
+                    // Convertir le timestamp en date et heure
+                    const timestamp = new Date(boat.timestamp * 1000); // Multipliez par 1000 car le timestamp est en secondes
+
+                    // Créez le contenu HTML personnalisé pour la popup
+                    const popupContent = `
+                        <div>
+                            <strong>Nom du Bateau:</strong> ${boatDetails.boatName}<br>
+                            <strong>Nom des Skippers:</strong> ${boatDetails.skipperNames}<br>
+                            <strong>Catégorie:</strong> ${boatDetails.category}<br>
+                            <strong>Cap:</strong> ${boat.heading}<br>
+                            <strong>Dist. au but:</strong> ${boat.dtf}<br>
+                            <strong>Dist. au premier:</strong> ${boat.dtl}<br>
+                            <strong>Vitesse:</strong> ${boat.speed}<br>
+                            <strong>Dernière mise à jour:</strong> ${timestamp.toLocaleString()}<br>
+                        </div>
+                    `;
+
+                    marker.bindPopup(popupContent);
+
+                    marker.on('click', () => {
+                        layer.setStyle({ weight: 4, opacity: 1 });
+                    });
+
+                    marker.on('mouseover', () => layer.setStyle({ weight: 4, opacity: 1 }));
+                    marker.on('mouseout', () => {
+                        if (!marker._icon.classList.contains('leaflet-popup-target')) {
+                            layer.setStyle({ weight: 2, opacity: 0.5 });
+                        }
+                    });
+
+                    lines.push(layer);
+
+                    updateIconStyle();
+                }
+
             }
         })
         .catch(console.error);
@@ -516,7 +1077,83 @@ export const onopen = () => {
     map.on('viewreset', updateIconStyle);
     hasHooks = true;
 
-    map.setView([28.600, -17.700], 8);
+    map.setView([20.400, -49.700], 5);
+};
+
+export const onmount = (node, refs) => {
+    // Whenever your plugin is mounted, all elements with 'data-ref'
+    // attributes are exposed in this.refs object
+    refs.serie.onclick = () => {
+        showSerie = true;
+        showProto= false;
+        remove();
+        load();
+        map.setView([20.400, -49.700], 5);
+    }
+    refs.proto.onclick = () => {
+        showSerie = false;
+        showProto= true;
+        remove();
+        load();
+        map.setView([20.400, -49.700], 5);
+    }
+    refs.all.onclick = () => {
+        showSerie = true;
+        showProto= true;
+        remove();
+        load();
+        map.setView([20.400, -49.700], 5);
+    }
+
+    refs.TJV.onclick = () => {
+        showClass40 = true;
+        showImoca = true;
+        showOceanFifty = true;
+        showUltim = true;
+        remove();
+        loadTJV();
+        map.setView([27.400, -35.700], 4);
+    }
+
+    refs.class40.onclick = () => {
+        showClass40 = true;
+        showImoca = false;
+        showOceanFifty = false;
+        showUltim = false;
+        remove();
+        loadTJV();
+        map.setView([36.400, -16.700], 5);
+    }
+
+    refs.imoca.onclick = () => {
+        showClass40 = false;
+        showImoca = true;
+        showOceanFifty = false;
+        showUltim = false;
+        remove();
+        loadTJV();
+        map.setView([43.400, -16.700], 5);
+    }
+
+    refs.oceanFifty.onclick = () => {
+        showClass40 = false;
+        showImoca = false;
+        showOceanFifty = true;
+        showUltim = false;
+        remove();
+        loadTJV();
+        map.setView([36.400, -16.700], 5);
+    }
+
+    refs.ultim.onclick = () => {
+        showClass40 = false;
+        showImoca = false;
+        showOceanFifty = false;
+        showUltim = true;
+        remove();
+        loadTJV();
+        map.setView([-8.400, -24.700], 5);
+    }
 };
 
 export const ondestroy = () => {
